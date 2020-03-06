@@ -1,5 +1,6 @@
 import { DataFetch } from "../fetch.js";
 import { searchFetch } from "../config.js";
+import { searchData } from "./searchData.js";
 
 export function SearchAutoComplete({ searchBar, autoCompleteInfo }) {
   this.searchBar = searchBar;
@@ -14,14 +15,11 @@ SearchAutoComplete.prototype = {
   },
 
   fetchMatchingWords() {
-    const searchWord = this.searchBar.searchWord.toLowerCase();
-    const matchingWords = new DataFetch(searchFetch);
-
-    return matchingWords
-      .fetchData()
-      .then(words =>
-        words.searchData.filter(word => word.startsWith(searchWord))
+    return new Promise((resolve, reject) => {
+      resolve(
+        searchData.filter(word => word.startsWith(this.searchBar.searchWord))
       );
+    });
   },
 
   makeSuggestionList(matchingWords) {

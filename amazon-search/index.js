@@ -5,14 +5,16 @@ import { CardMenuTemplate } from "./template/cardMenu.js";
 import { initCarouselCardSlider } from "./carousel/main.js";
 import { initSearch } from "./search/main.js";
 import { _$ } from "./util.js";
+import { contentsData } from "./contentsData.js";
 
 export function init() {
-  const carouselService = new DataFetch(carouselFetch);
-  carouselService
-    .fetchData()
-    .then(carouselData => initTemplate(carouselData))
-    .then(() => startAmazonService())
-    .catch(err => console.error(err));
+  // const carouselService = new DataFetch(carouselFetch);
+  // carouselService
+  //   .fetchData()
+  //   .then(carouselData => initTemplate(carouselData))
+  //   .then(() => startAmazonService())
+  //   .catch(err => console.error(err));
+  initTemplate(contentsData);
 }
 
 function initTemplate(carouselData) {
@@ -25,6 +27,7 @@ function initTemplate(carouselData) {
   data += cardMenuData.render();
   data += sliderData.render();
   dataArea.innerHTML = data;
+  startAmazonService();
 }
 
 function startAmazonService() {
