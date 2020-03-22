@@ -12,25 +12,27 @@ const init = () => {
 const createCarouselSlider = () => {
     const SLIDES = '.slider__list';
 
-    const slides = $(SLIDES),
-        sliderData = {
+    const slides = $(SLIDES)
+    const sliderInfo = {
+        sliderData: {
             slides: slides,
             slideIndex: 1,
         },
 
-        transitionProperty = {
+        transitionProperty: {
             NAME: 'all',
             DURATION: '.4s',
             TIMING_FUNC: 'ease-in-out'
         },
 
-        selectorName = {
+        selectorName: {
             FIRST_CLONE: 'slider-firstClone',
             LAST_CLONE: 'slider-lastClone',
             SLIDE_ITEM: '.slider__item',
         }
+    }
 
-    return new CarouselSlider(sliderData, transitionProperty, selectorName);
+    return new CarouselSlider(sliderInfo);
 }
 
 const createCarouselCardMenu = (carouselSlider) => {

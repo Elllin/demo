@@ -1,16 +1,16 @@
 class CarouselSlider {
-    constructor(sliderData, transitionProperty, selectorName) {
-        this.slides = sliderData.slides;
-        this.slideIndex = sliderData.slideIndex;
+    constructor(sliderInfo) {
+        this.slides = sliderInfo.sliderData.slides;
+        this.slideIndex = sliderInfo.sliderData.slideIndex;
         this.slideSize = this.slides.firstElementChild.clientWidth;
-        this.transitionProperty = transitionProperty;
-        this.selectorName = selectorName;
+        this.transitionProperty = sliderInfo.transitionProperty;
+        this.selectorName = sliderInfo.selectorName;
     }
 
     getSliderInfo() {
         this.slideItems = $(this.selectorName.SLIDE_ITEM, true);
         this.slideLength = this.slideItems.length;
-        this.lastSlideIndex = this.slideItems.length - 1
+        this.lastSlideIndex = this.slideItems.length - 1;
     }
 
     cloneSlide() {
